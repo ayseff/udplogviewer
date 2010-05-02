@@ -1,0 +1,12 @@
+width = 1047
+height = 463
+widths.Logger = 100
+widths.Date = 100
+widths.Time = 100
+widths.Exc = 100
+widths.Message = 538
+treshold = 'DEBUG'
+font.Name = 'Microsoft Sans Serif'
+font.Size = 8.25
+processorsForm.Width = 390
+processorsForm.Height = 600
