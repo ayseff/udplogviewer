@@ -28,7 +28,12 @@ namespace stej.Tools.UdpLogViewer.Core
 
 		List<IProcessor> CurrentProcessors
 		{
-			get { return _messageProcessors[_currentProcessorsFile]; }
+			get 
+			{
+				return _currentProcessorsFile == null 
+						? new List<IProcessor>()
+						: _messageProcessors[_currentProcessorsFile]; 
+			}
 		}
 
 		/// <summary>
@@ -79,6 +84,8 @@ namespace stej.Tools.UdpLogViewer.Core
 		{
 			lock (_processorsLock)
 			{
+				_messageProcessors = new Dictionary<string, List<IProcessor>>();
+
 				foreach (var f in Directory.GetFiles(".", "rules*.py"))
 				{
 					string file = Path.GetFileName(f);

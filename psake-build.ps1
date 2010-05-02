@@ -60,4 +60,7 @@ task CopyToBin {
  Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,rules.py,uiconfig.py | 
  	Write-ScriptInfo "Copying {0} to bin" -pass |
 	Copy-Item -Dest "$root\bin"
+ Get-ChildItem "$root\TestUdpEmitor\bin\$configuration\*" -include *.dll,*.exe,*.config | 
+ 	Write-ScriptInfo "Copying {0} to bin" -pass |
+	Copy-Item -Dest "$root\bin"
 }
