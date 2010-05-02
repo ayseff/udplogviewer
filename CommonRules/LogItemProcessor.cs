@@ -10,8 +10,8 @@ namespace stej.Tools.UdpLogViewer.CommonRules
 {
 	public abstract class LogItemProcessor : IProcessor 
 	{
-		// z ipy jsem mel problem, kdyz byly default parametry, tak to ipy nejako neumelo volat a porad to hlasilo 
-		// neco o nejakym nullu
+		// I had some problems with default parameters - IronPython could not call it, it was always
+		// complaining something about null
 		public LogItemProcessor(string regex, Color? color, Color? backColor, bool regexOnLogger)
 		{
 			Enabled       = true;

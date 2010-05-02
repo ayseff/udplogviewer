@@ -68,6 +68,9 @@ namespace stej.Tools.UdpLogViewer.Forms.UIConfig
 				sw.WriteLine("width = {0}", FormWidth);
 				sw.WriteLine("height = {0}", FormHeight);
 				sw.WriteLine("widths.Logger = {0}", _widths.Logger);
+				sw.WriteLine("widths.Domain = {0}", _widths.Domain);
+				sw.WriteLine("widths.Thread = {0}", _widths.Thread);
+				sw.WriteLine("widths.UserName = {0}", _widths.UserName);
 				sw.WriteLine("widths.Date = {0}", _widths.Date);
 				sw.WriteLine("widths.Time = {0}", _widths.Time);
 				sw.WriteLine("widths.Exc = {0}", _widths.Exc);

@@ -4,8 +4,8 @@ $framework = '4.0'
 $nunitPath = (join-path $psflashbak data\src\.net\lib\nunit\nunit-console.exe)
 
 properties {
-  $dir     = (join-path $psflashbak data\src\.net\UdpLogViewer)
-  $slnPath = (join-path $dir UdpLogViewer.Express2010.sln)
+  $root     = (join-path $codeplexSrcBak UdpLogViewer)
+  $slnPath = (join-path $root UdpLogViewer.Express2010.sln)
   $verbose = $false
   $configuration = 'Release' #Release/Debug
 }
@@ -14,7 +14,7 @@ Add-Module Nunit -verbose
 
 & {
   $script:context.Peek().properties | % { . $_ }
-  write-host Base directory: $dir -fore Green
+  write-host Base directory: $root -fore Green
   write-host Solution path: $slnPath -fore Green
   write-host Verbose: $verbose -fore Green
   write-host Configuration `(Debug/Release`): $configuration -fore Green
@@ -40,23 +40,24 @@ task Clean {
 }
 
 task RunTests {
-  #exec { & (join-path $dir FormsViewer\Test\bin\$configuration\Test.exe) }
+  #exec { & (join-path $root FormsViewer\Test\bin\$configuration\Test.exe) }
   #exec { & $nunitPath (join-path $psflashBak data\src\.net\UdpLogViewer\FormsViewer\Test\bin\$configuration\FormsViewer.Test.dll) }
   
-  $testAssembly = (join-path $psflashBak data\src\.net\UdpLogViewer\FormsViewer\Test\bin\$configuration\FormsViewer.Test.dll)
+  $testAssembly = (join-path $root FormsViewer\Test\bin\$configuration\FormsViewer.Test.dll)
   "Running tests for $testAssembly" | Write-ScriptInfo
   nunit -assembly $testAssembly -silent
 }
 
 task CleanBin `
-	-precondition { test-path "$dir\bin\" } `
-	-action       { gci "$dir\bin\" | Remove-Item -Force -ea Stop }
+	-precondition { test-path "$root\bin\" } `
+	-action       { gci "$root\bin\" | Remove-Item -Force -ea Stop }
 
 task CopyToBin {
- Get-ChildItem "$dir\FormsViewer\bin\$configuration\*" -include *.dll,*.exe,*.config | 
+ Get-ChildItem "$root\FormsViewer\bin\$configuration\*" -include *.dll,*.exe,*.config | 
+  ? { $_.Name -notmatch 'vshost' } |
  	Write-ScriptInfo "Copying {0} to bin" -pass |
-	Copy-Item -Dest "$dir\bin\"
- Get-ChildItem "$dir\FormsViewer\*" -include config.py,definitions.py,rules.py,uiconfig.py | 
+	Copy-Item -Dest "$root\bin\"
+ Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,rules.py,uiconfig.py | 
  	Write-ScriptInfo "Copying {0} to bin" -pass |
-	Copy-Item -Dest "$dir\bin"
+	Copy-Item -Dest "$root\bin"
 }

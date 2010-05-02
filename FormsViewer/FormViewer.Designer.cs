@@ -38,16 +38,19 @@ namespace stej.Tools.UdpLogViewer.Forms
 			this.fontBttn = new System.Windows.Forms.Button();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.logGrid = new stej.Tools.UdpLogViewer.Forms.LogGrid();
-			this.loggerTypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.timeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.excColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.msgCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bRules = new System.Windows.Forms.Button();
 			this.bReload = new System.Windows.Forms.Button();
 			this.bShowMatches = new System.Windows.Forms.Button();
 			this.lbProcessors = new System.Windows.Forms.ListBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.loggerTypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.DomainCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ThreadCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.UserCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.timeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.excColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.msgCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -179,6 +182,9 @@ namespace stej.Tools.UdpLogViewer.Forms
 			this.logGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.logGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.loggerTypeCol,
+            this.DomainCol,
+            this.ThreadCol,
+            this.UserCol,
             this.dateCol,
             this.timeCol,
             this.excColumn,
@@ -193,38 +199,6 @@ namespace stej.Tools.UdpLogViewer.Forms
 			this.logGrid.Size = new System.Drawing.Size(739, 423);
 			this.logGrid.TabIndex = 0;
 			this.logGrid.SelectionChanged += new System.EventHandler(this.RowSelectedHandler);
-			// 
-			// loggerTypeCol
-			// 
-			this.loggerTypeCol.HeaderText = "Logger";
-			this.loggerTypeCol.Name = "loggerTypeCol";
-			this.loggerTypeCol.ReadOnly = true;
-			// 
-			// dateCol
-			// 
-			this.dateCol.HeaderText = "Date";
-			this.dateCol.Name = "dateCol";
-			this.dateCol.ReadOnly = true;
-			// 
-			// timeCol
-			// 
-			this.timeCol.HeaderText = "Time";
-			this.timeCol.Name = "timeCol";
-			this.timeCol.ReadOnly = true;
-			// 
-			// excColumn
-			// 
-			this.excColumn.HeaderText = "Exc";
-			this.excColumn.Name = "excColumn";
-			this.excColumn.ReadOnly = true;
-			this.excColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.excColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			// 
-			// msgCol
-			// 
-			this.msgCol.HeaderText = "Message";
-			this.msgCol.Name = "msgCol";
-			this.msgCol.ReadOnly = true;
 			// 
 			// bRules
 			// 
@@ -278,6 +252,57 @@ namespace stej.Tools.UdpLogViewer.Forms
 			this.label2.TabIndex = 24;
 			this.label2.Text = "Select rules:";
 			// 
+			// loggerTypeCol
+			// 
+			this.loggerTypeCol.HeaderText = "Logger";
+			this.loggerTypeCol.Name = "loggerTypeCol";
+			this.loggerTypeCol.ReadOnly = true;
+			// 
+			// DomainCol
+			// 
+			this.DomainCol.HeaderText = "Domain";
+			this.DomainCol.Name = "DomainCol";
+			this.DomainCol.ReadOnly = true;
+			// 
+			// ThreadCol
+			// 
+			this.ThreadCol.HeaderText = "Thread";
+			this.ThreadCol.Name = "ThreadCol";
+			this.ThreadCol.ReadOnly = true;
+			// 
+			// UserCol
+			// 
+			this.UserCol.HeaderText = "User";
+			this.UserCol.Name = "UserCol";
+			this.UserCol.ReadOnly = true;
+			// 
+			// dateCol
+			// 
+			this.dateCol.HeaderText = "Date";
+			this.dateCol.Name = "dateCol";
+			this.dateCol.ReadOnly = true;
+			// 
+			// timeCol
+			// 
+			this.timeCol.HeaderText = "Time";
+			this.timeCol.Name = "timeCol";
+			this.timeCol.ReadOnly = true;
+			// 
+			// excColumn
+			// 
+			this.excColumn.HeaderText = "Exc";
+			this.excColumn.Name = "excColumn";
+			this.excColumn.ReadOnly = true;
+			this.excColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.excColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.excColumn.Width = 20;
+			// 
+			// msgCol
+			// 
+			this.msgCol.HeaderText = "Message";
+			this.msgCol.Name = "msgCol";
+			this.msgCol.ReadOnly = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,13 +350,16 @@ namespace stej.Tools.UdpLogViewer.Forms
 		private System.Windows.Forms.Button bRules;
 		private System.Windows.Forms.Button bReload;
 		private System.Windows.Forms.Button bShowMatches;
+		private System.Windows.Forms.ListBox lbProcessors;
+		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn loggerTypeCol;
+		private System.Windows.Forms.DataGridViewTextBoxColumn DomainCol;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ThreadCol;
+		private System.Windows.Forms.DataGridViewTextBoxColumn UserCol;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dateCol;
 		private System.Windows.Forms.DataGridViewTextBoxColumn timeCol;
 		private System.Windows.Forms.DataGridViewTextBoxColumn excColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn msgCol;
-		private System.Windows.Forms.ListBox lbProcessors;
-		private System.Windows.Forms.Label label2;
 
 	}
 }

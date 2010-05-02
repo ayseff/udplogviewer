@@ -21,6 +21,12 @@ namespace TestUdpEmitor
 				RandomLogs();
 				return;
 			}
+			else
+			{
+				Console.WriteLine("Press enter to start..");
+				Console.WriteLine("(in case you would like to send some random messages, just pass any argument. E.g. > TestUdpEmitor.exe something)");
+				Console.ReadLine();
+			}
 
 			Random r = new Random();
 			while (true)
@@ -30,22 +36,22 @@ namespace TestUdpEmitor
 					logger.DebugFormat("#{0} item, time: {1}", i, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 				Console.WriteLine("debugovaci: ");
 				Console.ReadLine();
-				logger.Debug("debugovaci zaznam, tak aby byl pekne dlouhejhejejhejelejehejej l;kadsf;lkjasd flkja hej asdlkj a ---- uz bude konec");
+				logger.Debug("debug message, veeery veeeeeeeeery long; something more here, veeeery long message and .. some more words here... ");
 				Console.WriteLine("info: ");
 				Console.ReadLine();
-				logger.Info("info");
+				logger.Info("info message");
 				Console.WriteLine("warn:");
 				Console.ReadLine();
-				logger.Warn("warn  123456789 123456789 123456789 123456789 123456789");
+				logger.Warn("warn with some numbers 123456789 123456789 123456789 123456789 123456789");
 				Console.WriteLine("error: ");
 				Console.ReadLine();
 				logger.Error("error");
-				Console.WriteLine("error s exc: ");
+				Console.WriteLine("error with exception:");
 				Console.ReadLine();
-				logger.Error("error s exc", new ApplicationException("vyjimka"));
-				Console.WriteLine("fatal: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa konec");
+				logger.Error("error with exception", new ApplicationException("something wrong happened"));
+				Console.WriteLine("fatal: error.. and end of loop");
 				Console.ReadLine();
-				logger.Fatal("fatal s exc", new ApplicationException("vyjimka"));
+				logger.Fatal("fatal with exception", new ApplicationException("fatal error"));
 			}
 		}
 

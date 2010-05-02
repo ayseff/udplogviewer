@@ -186,8 +186,8 @@ namespace stej.Tools.UdpLogViewer.Forms
 				LogItem item = ((LogGridRow)logGrid.SelectedRows[0]).LogItem;
 				string exc = item.Exception;
 
-				string str = string.Format("{0} {1},{2} {3}",
-					item.Logger, item.Date.ToShortDateString(), item.Date.ToString("HH:mm:ss.fff"), item.Message);
+				string str = string.Format("{0} {1}({2}), {3}, {4} {5} {6}",
+					item.Logger, item.Domain, item.Thread, item.Username, item.Date.ToShortDateString(), item.Date.ToString("HH:mm:ss.fff"), item.Message);
 				if (exc != null)
 					str = string.Concat(str, "\r\n", exc);
 				concreteItemTB.Text = str;
@@ -281,6 +281,9 @@ namespace stej.Tools.UdpLogViewer.Forms
 				_uiConfig.ColumnsWidths.Date    = dateCol.Width;
 				_uiConfig.ColumnsWidths.Time    = timeCol.Width;
 				_uiConfig.ColumnsWidths.Exc     = excColumn.Width;
+				_uiConfig.ColumnsWidths.Domain  = DomainCol.Width;
+				_uiConfig.ColumnsWidths.Thread   = ThreadCol.Width;
+				_uiConfig.ColumnsWidths.UserName = UserCol.Width;
 				_uiConfig.ColumnsWidths.Message = msgCol.Width;
 				_uiConfig.Treshold              = (Level)Enum.Parse(typeof(Level),levelsLB.SelectedItem.ToString());
 				_uiConfig.Font                  = logGrid.Font;
@@ -302,6 +305,9 @@ namespace stej.Tools.UdpLogViewer.Forms
 				timeCol.Width       = _uiConfig.ColumnsWidths.Time;
 				excColumn.Width     = _uiConfig.ColumnsWidths.Exc;
 				msgCol.Width        = _uiConfig.ColumnsWidths.Message;
+				DomainCol.Width     = _uiConfig.ColumnsWidths.Domain;
+				ThreadCol.Width     = _uiConfig.ColumnsWidths.Thread;
+				UserCol.Width       = _uiConfig.ColumnsWidths.UserName;
 
 				logGrid.Font.Dispose();
 				logGrid.Font          = _uiConfig.Font;

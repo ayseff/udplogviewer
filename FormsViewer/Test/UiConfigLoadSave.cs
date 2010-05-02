@@ -20,6 +20,9 @@ namespace Test
 			UIConfiguration c = new UIConfiguration();
 			c.Treshold = Level.INFO;
 			c.ColumnsWidths.Logger = 1;
+			c.ColumnsWidths.Domain = 2;
+			c.ColumnsWidths.Thread = 3;
+			c.ColumnsWidths.UserName = 4;
 			c.ColumnsWidths.Date = 20;
 			c.ColumnsWidths.Time = 30;
 			c.ColumnsWidths.Exc = 40;
@@ -31,6 +34,9 @@ namespace Test
 
 			Assert.AreEqual(c.Treshold, c2.Treshold);
 			Assert.AreEqual(c.ColumnsWidths.Logger, c2.ColumnsWidths.Logger);
+			Assert.AreEqual(c.ColumnsWidths.Domain, c2.ColumnsWidths.Domain);
+			Assert.AreEqual(c.ColumnsWidths.Thread, c2.ColumnsWidths.Thread);
+			Assert.AreEqual(c.ColumnsWidths.UserName, c2.ColumnsWidths.UserName);
 			Assert.AreEqual(c.ColumnsWidths.Date, c2.ColumnsWidths.Date);
 			Assert.AreEqual(c.ColumnsWidths.Time, c2.ColumnsWidths.Time);
 			Assert.AreEqual(c.ColumnsWidths.Exc, c2.ColumnsWidths.Exc);

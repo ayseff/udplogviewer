@@ -32,18 +32,18 @@ namespace stej.Tools.UdpLogViewer.Forms
 			string[] messageParts = message.Split('\r', '\n');
 			for (int i = 0; i < messageParts.Length; i++)
 			{
-				// pokud mam zpravu, kde je "abc\r\n12", pak mi to rozdeli na "abc","","","12", proto test na delku 0
+				// for message "abc\r\n12" it is split to "abc","","","12", that's why I  test to length 0
 				if (messageParts[i].Length == 0)
 					continue;
 
 				LogGridRow row = new LogGridRow(item);
 
 				if (nonEmptyFoundAlready)
-					row.CreateCells(this, "", "", "", "", messageParts[i]);
+					row.CreateCells(this, "", "", "", "", "", "", "", messageParts[i]);
 				else
 					row.CreateCells(
 						this,
-						item.Logger, item.Date.ToShortDateString(), item.Date.ToString("HH:mm:ss.fff"), item.Exception!=null?"(x)":"", messageParts[i]);
+						item.Logger, item.Domain, item.Thread, item.Username, item.Date.ToShortDateString(), item.Date.ToString("HH:mm:ss.fff"), item.Exception!=null?"(x)":"", messageParts[i]);
 
 				DataGridViewCellStyle style = new DataGridViewCellStyle();
 				style.ForeColor = foreColor;
@@ -56,7 +56,5 @@ namespace stej.Tools.UdpLogViewer.Forms
 				nonEmptyFoundAlready = true;
 			}
 		}
-
-	//	private void 
 	}
 }
