@@ -26,7 +26,7 @@ task default     -depends Full
 # high level tasks
 task Full        -depends Rebuild, RunTests, CleanBin, CopyToBin
 task RebuildOnly -depends Rebuild
-task Publish     -depends CopyToBin
+task Publish     -depends CleanBin, CopyToBin
 
 # low level tasks
 task Rebuild -depends Clean,Build
@@ -57,7 +57,7 @@ task CopyToBin {
   ? { $_.Name -notmatch 'vshost' } |
  	Write-ScriptInfo "Copying {0} to bin" -pass |
 	Copy-Item -Dest "$root\bin\"
- Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,rules.py,uiconfig.py | 
+ Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,example.rules.py,uiconfig.py | 
  	Write-ScriptInfo "Copying {0} to bin" -pass |
 	Copy-Item -Dest "$root\bin"
  Get-ChildItem "$root\TestUdpEmitor\bin\$configuration\*" -include *.dll,*.exe,*.config | 

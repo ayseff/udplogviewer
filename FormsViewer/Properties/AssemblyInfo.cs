@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FormsViewer")]
-[assembly: AssemblyCopyright("Copyright © stej 2006")]
+[assembly: AssemblyCopyright("Copyright © stej 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
