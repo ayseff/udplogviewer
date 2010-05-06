@@ -94,7 +94,9 @@ namespace stej.Tools.UdpLogViewer.Forms
 			timer.Start();
 
 			lbProcessors.DataSource = new List<string>(_processors.Files);
-			lbProcessors.SelectedIndexChanged += (o, a) => _processors.ChangeProcessors(lbProcessors.SelectedValue.ToString());
+			lbProcessors.SelectedIndexChanged += 
+				(o, a) =>
+					_processors.ChangeProcessors(lbProcessors.SelectedValue == null ? null : lbProcessors.SelectedValue.ToString());
 		}
 
         private void ShowError(string message = null, Exception exception = null)
@@ -335,6 +337,11 @@ namespace stej.Tools.UdpLogViewer.Forms
 			catch (ApplicationException ex) { ShowError(message:ex.Message); }
 			_processors.RereadProcessors();
 			lbProcessors.DataSource = new List<string>(_processors.Files);
+			lbProcessors.SelectedIndex = lbProcessors.Items.Count > 0 ? 0 : -1;
+			_processors.ChangeProcessors(
+				_processors.Files.Count() == 0
+				? null
+				: _processors.Files.First());
 		}
 
 		private void bShowMatches_Click(object sender, EventArgs e)

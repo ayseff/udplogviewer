@@ -52,6 +52,11 @@ namespace stej.Tools.UdpLogViewer.Core
 		{
 			lock (_processorsLock)
 			{
+				if (file == null)
+				{
+					_currentProcessorsFile = null;
+					return;
+				}
 				if (!_messageProcessors.ContainsKey(file))
 					throw new InvalidOperationException(string.Format("File {0} is not known. Processors from this file weren't loaded."));
 				_currentProcessorsFile = file;

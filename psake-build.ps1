@@ -10,7 +10,9 @@ properties {
   $configuration = 'Release' #Release/Debug
 }
 
-Add-Module Nunit -verbose
+Modules { 
+  Import-Module (Join-Path $script:psake.script_root nunit.psm1) -ArgumentList $nunitPath -verbose -force
+}
 
 & {
   $script:context.Peek().properties | % { . $_ }
