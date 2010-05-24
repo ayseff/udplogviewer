@@ -59,7 +59,7 @@ task CopyToBin {
   ? { $_.Name -notmatch 'vshost' } |
  	% { write-host "Copying $_ to bin"; $_ } |
 	Copy-Item -Dest "$root\bin\"
- Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,example.rules.py,uiconfig.py,xrules.addGrowl.py | 
+ Get-ChildItem "$root\FormsViewer\*" -include config.py,definitions.py,example.rules.py,uiconfig.py,support.rules.addGrowl.py | 
  	% { write-host "Copying $_ to bin"; $_ } |
 	Copy-Item -Dest "$root\bin"
  Get-ChildItem "$root\TestUdpEmitor\bin\$configuration\*" -include *.dll,*.exe,*.config | 
