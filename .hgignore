@@ -1,0 +1,13 @@
+relre:CommonRules/bin
+relre:CommonRules/obj
+relre:FormsViewer/Test/bin
+relre:FormsViewer/Test/obj
+relre:FormsViewer/bin
+relre:FormsViewer/obj
+relre:IpyHostingBenchmark/bin
+relre:IpyHostingBenchmark/obj
+relre:TestUdpEmitor/obj
+relre:TestUdpEmitor/bin
+relre:UdpLogViewerCore/bin
+relre:UdpLogViewerCore/obj
+glob:UdpLogViewer.Vs2008.suo

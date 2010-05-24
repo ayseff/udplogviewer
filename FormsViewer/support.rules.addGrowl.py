@@ -7,7 +7,7 @@ import Growl.Connector
 
 def send(caption, message):
 	connector = Growl.Connector.GrowlConnector()
-	notification = Growl.Connector.Notification('PowerGrowler', 'Default', System.DateTime.Now.Ticks.ToString(), caption, message)
+	notification = Growl.Connector.Notification('UdpLogViewer', 'lv', System.DateTime.Now.Ticks.ToString(), caption, message)
 	connector.Notify(notification)
 	
 def registerApp(appName, name, displayName, iconPath=None):
@@ -17,4 +17,6 @@ def registerApp(appName, name, displayName, iconPath=None):
 	if iconPath != None:
 		type.Icon =  iconPath
 	connector.Register(Growl.Connector.Application(appName), Array[Growl.Connector.NotificationType]([type])) 
-# registerApp('UdpLogViewer', 'lv', 'Message from ipy')
+	
+registerApp('UdpLogViewer', 'lv', 'Message')
+send('Registered!', 'You have just registered your application.')
