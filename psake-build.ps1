@@ -10,14 +10,6 @@ properties {
   $configuration = 'Release' #Release/Debug
 }
 
-& {
-  $script:context.Peek().properties | % { . $_ }
-  write-host Base directory: $root -fore Green
-  write-host Solution path: $slnPath -fore Green
-  write-host Verbose: $verbose -fore Green
-  write-host Configuration `(Debug/Release`): $configuration -fore Green
-}
-
 #FormatTaskName { write-host ("-"*25) "[$args]" ("-"*25) -foreground Blue -back White }
 
 task default     -depends Full
